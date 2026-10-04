@@ -1,0 +1,14 @@
+/* Subtle, bounded pointer feedback. The native cursor remains available. */
+.cortex{--fx-rgb:180,137,255}
+.pointer-effects{position:fixed;inset:0;z-index:80;pointer-events:none;overflow:hidden;opacity:0;contain:strict}
+.pointer-effects i{position:absolute;left:0;top:0;display:block;pointer-events:none;will-change:transform}
+.pointer-aura{width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(var(--fx-rgb),.085),rgba(var(--fx-rgb),.025) 38%,transparent 68%)}
+.pointer-spark{width:12px;height:12px;border-radius:2px;background:rgb(var(--fx-rgb));box-shadow:0 0 14px rgba(var(--fx-rgb),.45)}
+.fx-over-link .pointer-spark{background:#fff}
+.fx-surface{position:relative;isolation:isolate}
+.surface-glow{position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;opacity:0;background:radial-gradient(360px circle at var(--surface-x,50%) var(--surface-y,50%),rgba(var(--fx-rgb),.08),transparent 70%);transition:opacity .25s}
+.fx-active>.surface-glow{opacity:1}
+.reading-progress{position:fixed;top:0;left:0;z-index:110;width:100%;height:2px;transform:scaleX(0);transform-origin:left;pointer-events:none;background:linear-gradient(90deg,rgba(var(--fx-rgb),.4),rgb(var(--fx-rgb)));box-shadow:0 0 12px rgba(var(--fx-rgb),.35)}
+[hidden]{display:none!important}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.pointer-effects,.surface-glow{display:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation:none!important;transition:none!important}}
